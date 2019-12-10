@@ -47,23 +47,29 @@ table tbody tr td:last-child {
 
 .page table tbody tr .controls {
   position: absolute;
-  right: -1.6em;
   margin-top: -1.2em;
+  right: -14em;
+  width: 14em;
 }
 
 .right-table-controls {
   position: absolute;
-  right: -5.4em;
+  right: -14em;
+  width: 14em;
   margin-top: 0.7em;
 }
 
 .add-row-table-controls {
   position: absolute;
-  left: -3.75em;
   margin-top: -1.2em;
+  left: -14em;
+  width: 14em;
+  text-align: right;
 }
 
 .row-controls {
   position: absolute;
-  left: -7em;
+  left: -14em;
+  width: 14em;
+  text-align: right;
 }

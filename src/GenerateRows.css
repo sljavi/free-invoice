@@ -51,7 +51,9 @@
 
 .generate-rows-table-controls {
   position: absolute;
-  left: -5.79em;
   margin-top: 0.5em;
   z-index: 2;
+  left: -14em;
+  width: 14em;
+  text-align: right;
 }
