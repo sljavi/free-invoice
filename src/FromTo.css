@@ -1,0 +1,24 @@
+
+.page .from-to {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 2rem;
+}
+
+.page .from-to h3 {
+  font-weight: 400;
+}
+
+.page .from-to .name {
+  font-weight: 500;
+}
+
+.page .from-to .from {
+  width: 45%;
+}
+
+.page .from-to .to {
+  width: 45%;
+}

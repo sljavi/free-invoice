@@ -1,0 +1,29 @@
+.page .invoice {
+  margin-bottom: 2em;
+}
+
+.page .invoice .date {
+  position: relative;
+}
+
+.page .invoice .due {
+  position: relative;
+}
+
+.number .controls {
+  position: absolute;
+  left: -4.3em;
+  margin-top: -0.1em;
+}
+
+.date .controls {
+  position: absolute;
+  left: -6.9em;
+  margin-top: -0.1em;
+}
+
+.due .controls {
+  position: absolute;
+  left: -7.7em;
+  margin-top: -0.1em;
+}

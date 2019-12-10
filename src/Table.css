@@ -1,0 +1,69 @@
+table {
+  border-collapse: collapse;
+  background: #fff;
+  width: 100%;
+}
+
+table thead tr {
+  height: 2em;
+  background: #333;
+}
+
+table thead tr th {
+  font-size: 1em;
+  color: #fff;
+  line-height: 1.2;
+  font-weight: 500;
+  padding: 0.5em;
+}
+
+table thead tr th:first-child {
+  text-align: left;
+}
+
+table thead tr th:last-child {
+  text-align: right;
+}
+
+table tbody tr {
+  background: #eee;
+  font-size: 0.9em;
+}
+
+table tbody tr td {
+  padding: 0.5em;
+}
+
+table tbody tr td:last-child {
+  text-align: right;
+}
+
+.total {
+  font-size: 1.2em;
+  font-weight: 600;
+  text-align: right;
+  padding: 0.5em;
+}
+
+.page table tbody tr .controls {
+  position: absolute;
+  right: -1.6em;
+  margin-top: -1.2em;
+}
+
+.right-table-controls {
+  position: absolute;
+  right: -5.4em;
+  margin-top: 0.7em;
+}
+
+.add-row-table-controls {
+  position: absolute;
+  left: -3.75em;
+  margin-top: -1.2em;
+}
+
+.row-controls {
+  position: absolute;
+  left: -7em;
+}
