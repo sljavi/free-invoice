@@ -50,9 +50,9 @@ class App extends React.PureComponent {
             <Invoice onUpdateState={this.onUpdateState} />
             <Table onUpdateState={this.onUpdateState} />
           </div>
-          <img className='print' src={printer} onClick={() => window.print()} />
+          <img className='print' src={printer} onClick={() => window.print()} alt='print' />
         </div>
-        {!!this.state.saved && (<img className='save' src={save} />)}
+        {!!this.state.saved && (<img className='save' src={save} alt='save' />)}
       </div>
     );
   }

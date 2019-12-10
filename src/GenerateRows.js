@@ -77,6 +77,7 @@ class GenerateRows extends React.PureComponent {
     const to = moment(this.state.to);
     const difference = to.diff(from, 'days') + 1;
     if (difference > 0) {
+      // eslint-disable-next-line
       const rows = [...(new Array(difference))].map((nothing, index) => {
         const day = moment(from).add(index, 'day');
         if (!this.state.weekends || (this.state.weekends && day.day() >= 1 && day.day() <= 5)) {
