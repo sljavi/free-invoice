@@ -57,3 +57,48 @@
   width: 14em;
   text-align: right;
 }
+
+.weekend span {
+  width: 2em !important;
+  margin-top: 1em;
+}
+
+.rdrCalendarWrapper {
+  font-size: 10px;
+}
+.rdrDateDisplayWrapper {
+  background: #f3f3f3;
+}
+
+.rdrDateInput {
+  color: #aaa;
+}
+
+.rdrDateInput input {
+  color: #333;
+}
+
+.rdrDateDisplayItem { 
+  border-radius: 0;
+}
+
+.rdrMonthAndYearWrapper {
+  height: 40px;
+  padding: 0;
+}
+
+.rdrInRange, .rdrStartEdge, .rdrEndEdge {
+  color: #333 !important;
+}
+
+.rdrNextPrevButton {
+  background-color: #f3f3f3;
+}
+
+.rdrDayInPreview, .rdrDayEndPreview, .rdrDayStartPreview {
+  border-color: #333;
+}
+
+.rdrDayHovered:hover {
+  background: none;
+}

@@ -1,6 +1,9 @@
 import React from 'react';
 import moment from 'moment';
+import { DateRange } from 'react-date-range';
 
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 import './GenerateRows.css';
 
 class GenerateRows extends React.PureComponent {
@@ -99,15 +102,15 @@ class GenerateRows extends React.PureComponent {
     }
   }
 
-  updateFrom = (event) => {
-    const from = new Date(event.target.value).getTime();
+  updateFrom = (date) => {
+    const from = date.getTime();
     this.setState({from});
     localStorage.setItem('from', from);
     this.props.onUpdateState();
   }
 
-  updateTo = (event) => {
-    const to = new Date(event.target.value).getTime()
+  updateTo = (date) => {
+    const to = date.getTime()
     this.setState({to});
     localStorage.setItem('to', to);
     this.props.onUpdateState();
@@ -141,6 +144,11 @@ class GenerateRows extends React.PureComponent {
     this.props.onUpdateState();
   }
 
+  updateDates = (dates) => {
+    this.updateFrom(dates.selection.startDate);
+    this.updateTo(dates.selection.endDate);
+  }
+
   render() {
     return (
       <div>
@@ -165,23 +173,17 @@ class GenerateRows extends React.PureComponent {
               onChange={this.onUpdatePrice}
             />
           </label>
-          <label>
-            <span>From</span>
-            <input
-              type='date'
-              value={moment(this.state.from).format('YYYY-MM-DD')}
-              onChange={this.updateFrom}
-            />
-          </label>
-          <label>
-            <span>To</span>
-            <input
-              type='date'
-              value={moment(this.state.to).format('YYYY-MM-DD')}
-              onChange={this.updateTo}
-            />
-          </label>
-          <label>
+          <DateRange
+            editableDateInputs
+            onChange={this.updateDates}
+            moveRangeOnFirstSelection={false}
+            ranges={[{
+              startDate: new Date(this.state.from),
+              endDate: new Date(this.state.to),
+              key: 'selection'
+            }]}
+          />
+          <label className='weekend'>
             <span>
               <input
                 type='checkbox'
