@@ -29,7 +29,7 @@
 }
 
 .generate-rows label input {
-  width: 15em;
+  width: 20em;
   padding: 0.3em;
 }
 
@@ -101,4 +101,8 @@
 
 .rdrDayHovered:hover {
   background: none;
+}
+
+.rdrDateDisplayItem input {
+  height: 2em;
 }
