@@ -55,6 +55,7 @@ class Invoice extends React.PureComponent {
       const incrementedNumber = +number + 1;
       const updatedText = text.replace(number, incrementedNumber);
       this.updateState('number', updatedText);
+      document.title = `Invoice ${updatedText}`;
     }
   }
 
