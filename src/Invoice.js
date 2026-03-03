@@ -1,19 +1,21 @@
-import React from 'react';
 import moment from 'moment';
+import React from 'react';
+import { getInvoiceDataFromURL } from './url';
 
 import './Invoice.css';
 
-class Invoice extends React.PureComponent {
+const urldata = getInvoiceDataFromURL();
 
+class Invoice extends React.PureComponent {
   getInvoiceNumber = () => {
-    const value = localStorage.getItem('number') || 'INV-1';
+    const value = urldata.invNumber || localStorage.getItem('number') || 'INV-1';
     document.title = `Invoice ${value}`;
     return value;
-  }
+  };
 
   state = {
-    date: localStorage.getItem('date') || moment().format('MMM D, YYYY'),
-    dueDate: localStorage.getItem('dueDate') || moment().format('MMM D, YYYY'),
+    date: urldata.date || localStorage.getItem('date') || moment().format('MMM D, YYYY'),
+    dueDate: urldata.dueDate || localStorage.getItem('dueDate') || moment().format('MMM D, YYYY'),
     number: this.getInvoiceNumber()
   }
 
