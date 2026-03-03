@@ -1,10 +1,12 @@
 import React from 'react';
 import GenerateRows from './GenerateRows';
+import { getRowsFromURL } from './url';
 
 import './Table.css';
 
-class Table extends React.PureComponent {
+const urlRows = getRowsFromURL();
 
+class Table extends React.PureComponent {
   getRowList = () => {
     const rows = localStorage.getItem('rows');
     if (rows) {
@@ -19,7 +21,7 @@ class Table extends React.PureComponent {
   }
 
   state = {
-    rows: this.getRowList(),
+    rows: urlRows.length > 0 ? urlRows : this.getRowList(),
     showGenerateRowsModal: false
   }
 
