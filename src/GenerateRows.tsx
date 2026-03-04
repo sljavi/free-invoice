@@ -14,60 +14,6 @@ interface GenerateRowsProps {
   onUpdateState: () => void;
 }
 
-/** Migrate moment format tokens inside {{...}} to date-fns tokens */
-function migrateTemplate(tmpl: string): string {
-  return tmpl.replace(/\{\{([^}]+)\}\}/g, (_, fmt: string) => {
-    const migrated = fmt.replace(/\bD\b/g, 'd').replace(/YYYY/g, 'yyyy');
-    return `{{${migrated}}}`;
-  });
-}
-
-function getTemplate(): string {
-  const stored = localStorage.getItem('template');
-  if (stored) return migrateTemplate(stored);
-  return '{{MMM d, yyyy}} - Daily work';
-}
-
-function getTime(): string {
-  const stored = localStorage.getItem('time');
-  if (stored) return migrateTemplate(stored);
-  return '{{MMM d, yyyy}}';
-}
-
-function getPrice(): number {
-  const stored = localStorage.getItem('price');
-  if (stored) {
-    const price = parseFloat(stored);
-    if (!isNaN(price)) return price;
-  }
-  return 100;
-}
-
-function getFrom(): number {
-  const stored = localStorage.getItem('from');
-  if (stored) {
-    const from = +stored;
-    if (!isNaN(from)) return from;
-  }
-  return Date.now();
-}
-
-function getTo(): number {
-  const stored = localStorage.getItem('to');
-  if (stored) {
-    const to = +stored;
-    if (!isNaN(to)) return to;
-  }
-  return Date.now();
-}
-
-function getWeekends(): boolean {
-  if (localStorage.getItem('weekends')) {
-    return localStorage.getItem('template') === 'true';
-  }
-  return true;
-}
-
 function GenerateRows({ hideGenerateRowsModal, onGenerateRows, onUpdateState }: GenerateRowsProps) {
   const [template, setTemplate] = useState(() => getTemplate());
   const [time, setTime] = useState(() => getTime());
@@ -160,15 +106,15 @@ function GenerateRows({ hideGenerateRowsModal, onGenerateRows, onUpdateState }: 
 
   return (
     <div>
-      <div className='generate-rows-outside' onClick={hideGenerateRowsModal}></div>
-      <div className='generate-rows'>
+      <div className="generate-rows-outside" onClick={hideGenerateRowsModal}></div>
+      <div className="generate-rows">
         <label>
           <span>Template</span>
-          <input type='text' value={template} onChange={updateTemplate} />
+          <input type="text" value={template} onChange={updateTemplate} />
         </label>
         <label>
           <span>Amount</span>
-          <input type='number' value={price} onChange={onUpdatePrice} />
+          <input type="number" value={price} onChange={onUpdatePrice} />
         </label>
         <DateRange
           editableDateInputs
@@ -182,9 +128,9 @@ function GenerateRows({ hideGenerateRowsModal, onGenerateRows, onUpdateState }: 
             },
           ]}
         />
-        <label className='weekend'>
+        <label className="weekend">
           <span>
-            <input type='checkbox' checked={weekends} onChange={changeWeekends} />
+            <input type="checkbox" checked={weekends} onChange={changeWeekends} />
           </span>
           Exclude weekends
         </label>
@@ -196,6 +142,60 @@ function GenerateRows({ hideGenerateRowsModal, onGenerateRows, onUpdateState }: 
       </div>
     </div>
   );
+}
+
+/** Migrate moment format tokens inside {{...}} to date-fns tokens */
+function migrateTemplate(tmpl: string): string {
+  return tmpl.replace(/\{\{([^}]+)\}\}/g, (_, fmt: string) => {
+    const migrated = fmt.replace(/\bD\b/g, 'd').replace(/YYYY/g, 'yyyy');
+    return `{{${migrated}}}`;
+  });
+}
+
+function getTemplate(): string {
+  const stored = localStorage.getItem('template');
+  if (stored) return migrateTemplate(stored);
+  return '{{MMM d, yyyy}} - Daily work';
+}
+
+function getTime(): string {
+  const stored = localStorage.getItem('time');
+  if (stored) return migrateTemplate(stored);
+  return '{{MMM d, yyyy}}';
+}
+
+function getPrice(): number {
+  const stored = localStorage.getItem('price');
+  if (stored) {
+    const price = parseFloat(stored);
+    if (!isNaN(price)) return price;
+  }
+  return 100;
+}
+
+function getFrom(): number {
+  const stored = localStorage.getItem('from');
+  if (stored) {
+    const from = +stored;
+    if (!isNaN(from)) return from;
+  }
+  return Date.now();
+}
+
+function getTo(): number {
+  const stored = localStorage.getItem('to');
+  if (stored) {
+    const to = +stored;
+    if (!isNaN(to)) return to;
+  }
+  return Date.now();
+}
+
+function getWeekends(): boolean {
+  if (localStorage.getItem('weekends')) {
+    return localStorage.getItem('template') === 'true';
+  }
+  return true;
 }
 
 export default GenerateRows;

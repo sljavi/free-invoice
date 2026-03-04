@@ -1,5 +1,5 @@
+import { addDays, format } from 'date-fns';
 import { useState } from 'react';
-import { format, addDays } from 'date-fns';
 import { getInvoiceDataFromURL } from './url';
 
 import './Invoice.css';
@@ -9,12 +9,6 @@ interface InvoiceProps {
 }
 
 const urldata = getInvoiceDataFromURL();
-
-function getInvoiceNumber(): string {
-  const value = urldata.invNumber || localStorage.getItem('number') || 'INV-1';
-  document.title = `Invoice ${value}`;
-  return value;
-}
 
 function Invoice({ onUpdateState }: InvoiceProps) {
   const [date, setDate] = useState(
@@ -101,6 +95,12 @@ function Invoice({ onUpdateState }: InvoiceProps) {
       </p>
     </div>
   );
+}
+
+function getInvoiceNumber(): string {
+  const value = urldata.invNumber || localStorage.getItem('number') || 'INV-1';
+  document.title = `Invoice ${value}`;
+  return value;
 }
 
 export default Invoice;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import GenerateRows from './GenerateRows';
-import { getRowsFromURL } from './url';
 import type { Row } from './url';
+import { getRowsFromURL } from './url';
 
 import './Table.css';
 
@@ -11,23 +11,8 @@ interface TableProps {
 
 const urlRows = getRowsFromURL();
 
-function getRowList(): Row[] {
-  const rows = localStorage.getItem('rows');
-  if (rows) {
-    try {
-      return JSON.parse(rows) as Row[];
-    } catch (err) {
-      console.error(err);
-      return [];
-    }
-  }
-  return [];
-}
-
 function Table({ onUpdateState }: TableProps) {
-  const [rows, setRows] = useState<Row[]>(() =>
-    urlRows.length > 0 ? urlRows : getRowList()
-  );
+  const [rows, setRows] = useState<Row[]>(() => (urlRows.length > 0 ? urlRows : getRowList()));
   const [showGenerateRowsModal, setShowGenerateRowsModal] = useState(false);
 
   const updateRows = (newRows: Row[]) => {
@@ -96,8 +81,8 @@ function Table({ onUpdateState }: TableProps) {
                 <span contentEditable onBlur={(e) => onChangeRowName(e, row.key)}>
                   {row.name}
                 </span>
-                <div className='controls'>
-                  <button className='right' onClick={() => removeRow(row.key)}>
+                <div className="controls">
+                  <button className="right" onClick={() => removeRow(row.key)}>
                     x
                   </button>
                 </div>
@@ -112,13 +97,13 @@ function Table({ onUpdateState }: TableProps) {
           ))}
         </tbody>
       </table>
-      <div className='add-row-table-controls'>
-        <button className='left' onClick={addRow}>
+      <div className="add-row-table-controls">
+        <button className="left" onClick={addRow}>
           Add row
         </button>
       </div>
-      <div className='generate-rows-table-controls'>
-        <button className='left' onClick={toggleGenerateRowsModal}>
+      <div className="generate-rows-table-controls">
+        <button className="left" onClick={toggleGenerateRowsModal}>
           Generate rows
         </button>
       </div>
@@ -130,18 +115,31 @@ function Table({ onUpdateState }: TableProps) {
         />
       )}
       {rows.length > 0 && (
-        <div className='right-table-controls'>
-          <button className='right' onClick={removeRows}>
+        <div className="right-table-controls">
+          <button className="right" onClick={removeRows}>
             Remove rows
           </button>
         </div>
       )}
-      <p className='total'>
+      <p className="total">
         <span>Total: </span>
-        <span className='total-number'>${total}</span>
+        <span className="total-number">${total}</span>
       </p>
     </div>
   );
+}
+
+function getRowList(): Row[] {
+  const rows = localStorage.getItem('rows');
+  if (rows) {
+    try {
+      return JSON.parse(rows) as Row[];
+    } catch (err) {
+      console.error(err);
+      return [];
+    }
+  }
+  return [];
 }
 
 export default Table;
